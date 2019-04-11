@@ -11,7 +11,8 @@ attr_reader :players, :board
   end
 
   def player_1_play(piece, location)
+    if piece == 'x' || piece == 'o'
     @board.place_piece(piece, location)
+    end
+    end
   end
-
-end

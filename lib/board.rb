@@ -30,4 +30,14 @@ def get_contents_of(location)
   @board[location.first][location.last]
 end
 
+private
+
+def initialize_copy(source)
+  blank_spaces = @blank_spaces.map(&:dup)
+      board = @board.map(&:dup)
+      super
+      @blank_spaces = blank_spaces
+      @board = board
+end
+
 end

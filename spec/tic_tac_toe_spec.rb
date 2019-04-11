@@ -50,4 +50,16 @@ describe 'Tic Tac Toe Game' do
     expect(game.board.get_contents_of([3,3])).to eq('x')
   end
 
+  it 'should have a blank board after a player plays' do
+    game = Tictactoe.new
+    game.player_1_play('x', [3,3])
+    expect(game.board.blank?).to be_falsey
+  end
+
+  it 'only accepts x and o' do
+    game = Tictactoe.new
+    game.player_1_play('a', [3,3])
+    expect(game.board.blank?).to be_truthy
+  end
+
 end
