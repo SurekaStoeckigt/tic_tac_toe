@@ -10,4 +10,8 @@ attr_reader :players, :board
     'x'
   end
 
+  def player_1_play(piece, location)
+    @board.place_piece(piece, location)
+  end
+
 end
