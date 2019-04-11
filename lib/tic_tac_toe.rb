@@ -14,5 +14,6 @@ attr_reader :players, :board
     if piece == 'x' || piece == 'o'
     @board.place_piece(piece, location)
     end
+    @board
     end
   end

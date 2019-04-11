@@ -62,4 +62,9 @@ describe 'Tic Tac Toe Game' do
     expect(game.board.blank?).to be_truthy
   end
 
+  it 'should be returned after placing a piece' do
+    game = Tictactoe.new
+    expect(game.player_1_play('x', [3,3])).to be_an_instance_of Board
+  end
+
 end
