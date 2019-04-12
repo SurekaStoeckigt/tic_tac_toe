@@ -25,46 +25,64 @@ describe 'Tic Tac Toe Game' do
 
   it 'counts total spaces on the board' do
     game = Tictactoe.new
+    board = Board.new
     expect(game.board.total_spaces).to eq(9)
   end
 
   it 'returns empty space coordinates on the board' do
     game = Tictactoe.new
+    board = Board.new
     expect(game.board.locate_blank_spaces).to eq([[0, 0], [0, 1], [0, 2], [1, 0], [1, 1], [1, 2], [2, 0], [2, 1], [2, 2]])
   end
 
   it 'has a blank board by default' do
     game = Tictactoe.new
+    board = Board.new
     expect(game.board.blank?).to be_truthy
   end
 
   it 'player 1 can put an x on the location(3,3)' do
     game = Tictactoe.new
-    game.player_1_play('x', [3,3])
+    board = Board.new
+    game.player_1_play(board, 'x', [3,3])
     expect(game.board.empty_spaces).to eq(8)
   end
 
   it 'player 1 can put an x on the location(3,3)' do
     game = Tictactoe.new
-    game.player_1_play('x', [3,3])
-    expect(game.board.get_contents_of([3,3])).to eq('x')
+    board = Board.new
+    game.player_1_play(board, 'x', [3,3])
+    expect(game.board.get_contents_of(board.board,[3,3])).to eq('x')
   end
 
   it 'should have a blank board after a player plays' do
     game = Tictactoe.new
-    game.player_1_play('x', [3,3])
+    board = Board.new
+    game.player_1_play(board, 'x', [3,3])
     expect(game.board.blank?).to be_falsey
   end
 
   it 'only accepts x and o' do
     game = Tictactoe.new
-    game.player_1_play('a', [3,3])
+    board = Board.new
+    game.player_1_play(board, 'a', [3,3])
     expect(game.board.blank?).to be_truthy
   end
 
   it 'should be returned after placing a piece' do
     game = Tictactoe.new
-    expect(game.player_1_play('x', [3,3])).to be_an_instance_of Board
+    board = Board.new
+    expect(game.player_1_play(board, 'x', [3,3])).to be_an_instance_of Board
+  end
+
+  it 'can create a copy of itsle' do
+    game = Tictactoe.new
+    board = Board.new
+    game.player_1_play(board, 'x', [3,3])
+    board_copy = Board.new.clone
+    game.player_1_play(board, 'x', [2,3])
+    game.player_1_play(board,'x', [2,2])
+    # expect(game.board_copy.get_contents_of[2,3]).to eq(nil)
   end
 
 end

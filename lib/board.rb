@@ -1,5 +1,5 @@
 class Board
-  attr_reader :width, :empty_spaces, :total_spaces
+  attr_reader :width, :empty_spaces, :total_spaces, :board
   BLANK  =nil
 
   def initialize
@@ -19,21 +19,23 @@ class Board
    @empty_spaces == @total_spaces
  end
 
-def place_piece(name, location)
+def place_piece(board, name, location)
+  @board = board
   @board[location.first][location.last] = name
   @empty_spaces -= 1
   @occupied_spaces += 1
   @blank_spaces_coordinates.delete(location)
 end
 
-def get_contents_of(location)
+def get_contents_of(board, location)
+  @board = board
   @board[location.first][location.last]
 end
 
-private
+
 
 def initialize_copy(source)
-  blank_spaces = @blank_spaces.map(&:dup)
+      blank_spaces = @blank_spaces_coordinates.map(&:dup)
       board = @board.map(&:dup)
       super
       @blank_spaces = blank_spaces
