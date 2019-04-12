@@ -32,7 +32,9 @@ def get_contents_of(board, location)
   @board[location.first][location.last]
 end
 
-
+def flatten_board
+  @board.flatten
+end
 
 def initialize_copy(source)
       blank_spaces = @blank_spaces_coordinates.map(&:dup)

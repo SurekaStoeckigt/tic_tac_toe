@@ -87,4 +87,12 @@ describe 'Tic Tac Toe Game' do
     expect(game.board.get_contents_of(board_copy.board, [2,3])).to eq('x')
   end
 
+  it 'can be turned into a flat array' do
+    game = Tictactoe.new
+    board = Board.new
+    game.player_1_play(board, 'x', [0,2])
+    game.player_1_play(board,'o', [1,1])
+    expect(game.board.flatten_board).to eq([0, 0, 'x', 0, 'o', 0, 2, 1, 0, 1, 1, 1, 2, 2, 0, 2, 1, 2, 2])
+  end
+
 end
