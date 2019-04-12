@@ -1,6 +1,6 @@
 class Board
   attr_reader :width, :empty_spaces, :total_spaces, :board
-  BLANK  =nil
+
 
   def initialize
     @width = 3

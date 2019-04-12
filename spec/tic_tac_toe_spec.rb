@@ -52,7 +52,7 @@ describe 'Tic Tac Toe Game' do
     game = Tictactoe.new
     board = Board.new
     game.player_1_play(board, 'x', [3,3])
-    expect(game.board.get_contents_of(board.board,[3,3])).to eq('x')
+    expect(game.board.get_contents_of(board.board, [3,3])).to eq('x')
   end
 
   it 'should have a blank board after a player plays' do
@@ -75,14 +75,16 @@ describe 'Tic Tac Toe Game' do
     expect(game.player_1_play(board, 'x', [3,3])).to be_an_instance_of Board
   end
 
-  it 'can create a copy of itsle' do
+  it 'can create a copy of itslef' do
     game = Tictactoe.new
     board = Board.new
     game.player_1_play(board, 'x', [3,3])
     board_copy = Board.new.clone
-    game.player_1_play(board, 'x', [2,3])
+    game.player_1_play(board_copy, 'x', [2,3])
     game.player_1_play(board,'x', [2,2])
-    # expect(game.board_copy.get_contents_of[2,3]).to eq(nil)
+    p board_copy
+    expect(game.board.get_contents_of(board.board, [2,3])).to eq(nil)
+    expect(game.board.get_contents_of(board_copy.board, [2,3])).to eq('x')
   end
 
 end
