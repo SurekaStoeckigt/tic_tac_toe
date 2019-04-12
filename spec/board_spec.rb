@@ -1,7 +1,7 @@
 require './lib/tic_tac_toe.rb'
 require './lib/board.rb'
 
-describe 'Tic Tac Toe Game' do
+describe 'Tic Tac Toe Game Board' do
 
   it 'starts a game with 2 players by default' do
     game = Tictactoe.new
@@ -52,7 +52,7 @@ describe 'Tic Tac Toe Game' do
     game = Tictactoe.new
     board = Board.new
     game.player_1_play(board, 'x', [3,3])
-    expect(game.board.get_contents_of(board.board, [3,3])).to eq('x')
+    expect(game.board.get_contents_of(board.current_board, [3,3])).to eq('x')
   end
 
   it 'should have a blank board after a player plays' do
@@ -83,8 +83,8 @@ describe 'Tic Tac Toe Game' do
     game.player_1_play(board_copy, 'x', [2,3])
     game.player_1_play(board,'x', [2,2])
     p board_copy
-    expect(game.board.get_contents_of(board.board, [2,3])).to eq(nil)
-    expect(game.board.get_contents_of(board_copy.board, [2,3])).to eq('x')
+    expect(game.board.get_contents_of(board.current_board, [2,3])).to eq(nil)
+    expect(game.board.get_contents_of(board_copy.current_board, [2,3])).to eq('x')
   end
 
   it 'can be turned into a flat array' do
