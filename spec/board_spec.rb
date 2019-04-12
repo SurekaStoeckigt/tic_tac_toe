@@ -10,7 +10,7 @@ describe 'Tic Tac Toe Game Board' do
 
   it 'returns the current symbol of the player' do
     game = Tictactoe.new
-    expect(game.get_current_player_symbol).to eq('x')
+    expect(game.get_current_player_symbol).to eq("")
   end
 
   it 'starts with a new board and a set width of 3' do
@@ -65,8 +65,8 @@ describe 'Tic Tac Toe Game Board' do
   it 'only accepts x and o' do
     game = Tictactoe.new
     board = Board.new
-    game.player_1_play(board, 'a', [3,3])
-    expect(game.board.blank?).to be_truthy
+
+    expect{ game.player_1_play(board, 'a', [3,3]) }.to raise_error('Invalid character detected')
   end
 
   it 'should be returned after placing a piece' do
@@ -82,7 +82,6 @@ describe 'Tic Tac Toe Game Board' do
     board_copy = Board.new.clone
     game.player_1_play(board_copy, 'x', [2,3])
     game.player_1_play(board,'x', [2,2])
-    p board_copy
     expect(game.board.get_contents_of(board.current_board, [2,3])).to eq(nil)
     expect(game.board.get_contents_of(board_copy.current_board, [2,3])).to eq('x')
   end
