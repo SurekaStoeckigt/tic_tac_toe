@@ -14,6 +14,21 @@ describe 'Tic Tac Toe Game' do
     expect(game.board.get_contents_of(game.board.current_board, [3,3])).to eq('x')
   end
 
+  it 'initializes with no impossible moves' do
+    game = Tictactoe.new
+    expect(game.locations_not_availabe).to eq([])
+  end
+
+  it 'has a maximum index' do
+    game = Tictactoe.new
+    expect(game.max_index).to eq(2)
+  end
+
+  it 'has a minimum moves to win the game' do
+    game = Tictactoe.new
+    expect(game.minimum_moves_to_win).to eq(3)
+  end
+
   it 'player 1 plays first' do
     game = Tictactoe.new
     expect(game.turn).to eq('Player 1')

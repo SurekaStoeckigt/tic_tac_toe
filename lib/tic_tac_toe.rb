@@ -1,5 +1,5 @@
 class Tictactoe
-attr_reader :players, :board, :turn, :player_symbol
+attr_reader :players, :board, :turn, :player_symbol, :locations_not_availabe, :max_index, :minimum_moves_to_win
 
   def initialize(players = 2)
 
@@ -7,6 +7,9 @@ attr_reader :players, :board, :turn, :player_symbol
     @board = Board.new
     @turn = 'Player 1'
     @player_symbol = ''
+    @locations_not_availabe = []
+    @minimum_moves_to_win = @board.width
+    @max_index = @board.width - 1
   end
 
   def get_current_player_symbol
